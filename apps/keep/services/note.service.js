@@ -52,6 +52,7 @@ function _createNotes() {
           id: 'n101',
           type: 'note-txt',
           isPinned: true,
+          pinIcon: 'https://static.thenounproject.com/png/2801469-200.png',
           info: {
             txt: 'Fullstack Me Baby!',
           },

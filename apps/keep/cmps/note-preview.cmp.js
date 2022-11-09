@@ -3,8 +3,9 @@ export default {
   template: `
 
   <section v-if="note" v-on:click.self="this.$emit('edit')">
-      <div v-on:click.self="this.$emit('edit')" :style="{backgroundColor: setBg()}" >
-          <img v-on:click.self="this.$emit('edit')" v-if="getUrl()" :src='getUrl()' alt="img not found">
+    <h1>vue.</h1>
+      <div v-on:click.self="this.$emit('edit')" :style="{backgroundColor: setBackGround()}" >
+          <img v-on:click.self="this.$emit('edit')" v-if="getUrl()" :src='getUrl()' alt="unknown URL ;)">
           <h3 v-on:click.self="this.$emit('edit')">{{getTitle()}}</h3>
           <p v-on:click.self="this.$emit('edit')" v-if="getNoteTxt()" class="keep-note-info"> {{getNoteTxt()}}</p>
           <iframe v-if="getVUrl()" :src='getVUrl()'></iframe>
@@ -33,7 +34,7 @@ export default {
         : 'Title not defined'
       return title
     },
-    setBg() {
+    setBackGround() {
       if ('style' in this.note) {
         if ('backgroundColor' in this.note.style)
           return this.note.style.backgroundColor
@@ -111,4 +112,7 @@ export default {
     },
   },
   computed: {},
+  created(){
+    console.log('hi');
+  }
 }

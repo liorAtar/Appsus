@@ -3,12 +3,15 @@ export default {
   props: ['notes'],
   template: `
    <section class="notes-list-container">
-       <div v-for="note in notes" :key="note.id" class="notes-list">
-        
+   <div v-for="note in notes" :key="note.id" class="keep-app-notes-list"
+       :class="{'keep-note-pin': note.isPinned, 'keep-note-not-pin': !note.isPinned}">
+        <h1>{{ note }}</h1>
+            <div v-if="note.isPinned" class="pinned-icon">Pinned Note!</div>
             <span class="keep-list-note-options">
                 <button title="Delete note" @click="remove(note.id)">Delete</button>
-                <button title="Edit note" @click="editNote(note)">Edit</button>
+                <!-- <button title="Edit note" @click="editNote(note)">Edit</button> -->
                 <button title="Duplicate note" @click="dupNote(note)">Duplicate</button>
+                <button :title="getTitle(note)" @click="togglePin(note)">PIN</button>
             </span>
         </div>
     </section>
@@ -28,9 +31,9 @@ export default {
       console.log(noteId)
       this.$emit('remove', noteId)
     },
-    editNote(note) {
-      this.$emit('edit', note)
-    },
+    // editNote(note) {
+    //   this.$emit('edit', note)
+    // },
     togglePin(note) {
       this.$emit('togglePin', note)
     },
