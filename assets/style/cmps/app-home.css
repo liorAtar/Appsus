@@ -1,0 +1,42 @@
+.menu-button{
+    font-size: 35px;
+    background-color: transparent;
+    border-color: transparent;
+}
+.modal-items-ctn:not(.close-modal-btn){
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: auto;
+}
+.settings-modal{
+    background-color: rgba(252, 252, 252, 0.931);
+    padding: 60px;
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    margin-top: 250px;
+    margin-left: 20px;
+    border-radius: 5px;
+    left: 0;
+    transition: 50s;
+    z-index: 999;
+}
+
+.settings-modal button{
+    background-color: transparent;
+    border-color: transparent;
+    color: rgb(0, 0, 0);
+}
+.settings-modal button:not(.close-modal-btn):hover{
+    background-color: rgba(101, 101, 101, 0.122);   
+}
+.close-modal-btn{
+    display: flex;
+    font-size: 10px;
+    cursor: pointer;
+    text-align: start;
+    justify-content: flex-start;
+}
+.close-modal-btn:hover{
+    background-color: transparent;
+}

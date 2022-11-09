@@ -6,8 +6,22 @@ import noteFilter from '../cmps/note-filter.cmp.js'
 
 export default {
   template: `
+  <div class="settings-modal" v-if="isMenu">
+  <button class="close-modal-btn" @click="toggleMenu">❌</button> 
+    <div class="modal-items-ctn">
+  
+            <button @click=""><span>Background Color</span>🎨</button>
+            <button @click=""><span>Settings</span>⚙️</button>  
+            <button>X</button>
+            <button>X</button>
+            <button>X</button>
+            <button>X</button>
+    </div>
+  </div>
     <div class="keep-app-main">
-        <span class="keep-header"><img src=""><h1 class="keep-header-color">KEEP APP</h1></span>
+        <span class="keep-header"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Google_Keep_icon_%282020%29.svg/800px-Google_Keep_icon_%282020%29.svg.png">
+        <h1 class="keep-header-color">KEEP APP</h1></span>
+        <button class="menu-button" @click="toggleMenu" v-if="!hideBurger">≡</button>
         <note-filter @filtered="filterNote"/>
         <add-note  @add="saveNewNote"/>
         <note-list @remove="removeNote" @todo="saveToDo" @delTodo="deleteTodo" @togglePin="changeNotePin" @dup="dupNote" :notes='notesToDisplay'/>
@@ -25,12 +39,20 @@ export default {
       notes: null,
       noteToEdit: null,
       filterBy: null,
+      isMenu: false,
+      hideBurger: false,
     }
   },
   created() {
     noteService.query().then((notes) => (this.notes = notes))
   },
   methods: {
+    toggleMenu() {
+      this.isMenu = !this.isMenu
+      this.hideBurger = !this.hideBurger
+      console.log('status', this.isMenu)
+      console.log('menu activated');
+    },
     saveToDo(note, todo) {
       noteService.updateTodo(note, todo)
     },
