@@ -1,11 +1,15 @@
 .mails-list ul{
     list-style-type: none;
+    padding: 0;
 }
 
 .mails-list ul li {
     display: grid;
     grid-template-columns: 1fr 18fr 1fr 1fr 1fr;
-    border: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
 }
 
 .mails-list ul li:hover {
@@ -13,7 +17,23 @@
     box-shadow: 0 0 3px;
 }
 
+.mails-list ul li:hover > .actions{
+    visibility: visible;
+}
+
+.mails-list ul .mail-read {
+    background-color: #cfdcf63d;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+}
+
+.mails-list ul li .actions{
+    visibility: hidden;
+}
+
 .mail-star {
+    height: 40px;
+    width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,7 +45,7 @@
 
 .mail-star:hover {
     background-color: lightgray;
-    border-radius: 50%;
+    border-radius: 50px;
 }
 
 .mail-preview {
@@ -44,10 +64,10 @@
     margin: 0;
 }
 
-.mail-read {
+.read p {
     font-weight: normal
 }
 
-.mail-not-read {
+.not-read p {
     font-weight: bold
 }

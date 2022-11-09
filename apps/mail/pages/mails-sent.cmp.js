@@ -1,18 +1,10 @@
+import { eventBus } from "../../../services/event-bus.service.js"
 import { mailService } from "../services/mail-service.js"
-
 import mailList from '../cmps/mail-list.cmp.js'
 
 export default {
     template: `
-    <section class="mails" v-if="mails">
-        <h1>Unread</h1>
-        <mail-list 
-            v-if="mails"
-            :mails="mailsUnread"
-            @selected="selectMail" 
-            @updateStarred="updateStarStatus"
-            @remove="removeMail" />
-        <h1>Everything else </h1>
+    <section class="mails">
         <mail-list 
             v-if="mails"
             :mails="allMails"
@@ -24,17 +16,27 @@ export default {
     data() {
         return {
             mails: null,
+            starsCount: null,
             selectedMail: null,
         }
     },
     created() {
-        mailService.query()
-            .then(mails => {
-                this.mails = mails
-                console.log('mails', mails)
-            })
+        this.loasMails()
+        eventBus.on('add-mail', this.reloadMails)
     },
     methods: {
+        loasMails(){
+            mailService.query()
+            .then(mails => {
+                this.mails = mails
+            })
+        },
+        reloadMails(payload){
+            mailService.addNewMail(payload)
+            .then( mail => {
+                this.mails.push(mail)
+            })
+        },
         removeMail(mailId) {
             mailService.remove(mailId)
                 .then(() => {
@@ -47,15 +49,22 @@ export default {
         },
         updateStarStatus(mail) {
             mailService.updateIsStarred(mail).then(mail => this.selectedMail = mail)
+            this.starsCount = this.mails.filter(mail => mail.status === "sent" && mail.isStarred === true).length
         },
     },
     computed: {
-        mailsUnread() {
-            return this.mails.filter(mail => mail.isRead === false && mail.status === "inbox")
-        },
         allMails() {
-            return this.mails.filter(mail => mail.isRead === true && mail.status === "inbox")
+            return this.mails && this.mails.filter(mail => mail.status === "sent").reverse()
         },
+    },
+    watch: {
+        starsCount: {
+            handler(){
+                console.log('Something changed')
+                this.loasMails()
+            },
+            immediate: true
+        }
     },
     components: {
         mailList,

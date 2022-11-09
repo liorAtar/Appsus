@@ -1,7 +1,6 @@
 import { mailService } from "../services/mail-service.js"
 
 import mailList from '../cmps/mail-list.cmp.js'
-import mailDetails from './mail-details.cmp.js'
 
 export default {
     template: `
@@ -13,14 +12,14 @@ export default {
                 v-if="mails"
                 :mails="mailsUnread"
                 @selected="selectMail" 
-                @updateIsStarred="updateStarStatus"
+                @updateStarred="updateStarStatus"
                 @remove="removeMail" />
             <h1>Everything else </h1>
             <mail-list 
                 v-if="mails"
                 :mails="allMails"
                 @selected="selectMail" 
-                @updateIsStarred="updateStarStatus"
+                @updateStarred="updateStarStatus"
                 @remove="removeMail" />
         </section>
     </section>
@@ -29,7 +28,6 @@ export default {
         return {
             mails: null,
             selectedMail: null,
-            filteredBy: 'inbox'
         }
     },
     created() {
@@ -64,6 +62,5 @@ export default {
     },
     components: {
         mailList,
-        mailDetails,
     }
 }

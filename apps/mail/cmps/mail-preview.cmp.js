@@ -2,10 +2,9 @@ export default {
     props: ['mail'],
     template: `
         <router-link :to="mail.id">
-            <section :title="mail.subject" class="mail-preview">
-                <p class="mail-subject" :class="isRead">{{ mail.subject }}</p>
-                <p class="mail-subject" :class="isRead">{{ mail.subject }}</p>
-                <p class="mail-date" :class="isRead">{{ sentAt }}</p>
+            <section :title="mail.subject" class="mail-preview" :class="isRead">
+                <p class="mail-subject">{{ mail.subject }}</p>
+                <p class="mail-date">{{ sentAt }}</p>
             </section>
         </router-link>
     `,
@@ -17,7 +16,7 @@ export default {
             return this.$route.fullPath + '/'
         },
         isRead() {
-            return this.mail.isRead ? 'mail-read' : 'mail-not-read'
+            return this.mail.isRead ? 'read' : 'not-read'
         },
         sentAt() {
             // unix timestamp
