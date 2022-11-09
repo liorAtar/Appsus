@@ -1,3 +1,5 @@
+import { noteService } from '../services/note.service.js'
+
 export default {
   template: `
     <div class="keep-app-main-page">
@@ -6,4 +8,18 @@ export default {
     </span>
     </div>
     `,
+
+  components: {},
+  data() {
+    return {
+      notes: null,
+      filterBy: null,
+    }
+  },
+  created() {
+    noteService.query().then((notes) => (this.notes = notes))
+  },
+  computed:{
+    notesToDisplay(){}
+  },
 }
