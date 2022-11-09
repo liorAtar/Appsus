@@ -1,6 +1,6 @@
 .app-header {
   display: flex;
-  background-color: var(--clr5);
+  background-color: rgb(32, 32, 32);
   color: var(--secondary-clr1);
   padding: 2em;
   flex-direction: row;

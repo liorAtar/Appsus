@@ -8,6 +8,22 @@
   width: 700px;
   height: 400px;
 }
+.home-intro > h2{
+  text-transform: uppercase;
+}
+.home-links{
+  display: flex;
+  justify-content: space-around;
+}
+.home-links img{
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+}
+.home-links img:hover{
+  transform: rotate(180deg);
+  transition: 10s;
+}
 @media(max-width: 720px) {
   .app-header {
     background-color: var(--clr4);
