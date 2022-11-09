@@ -1,7 +1,11 @@
 .app-header {
+  display: flex;
   background-color: var(--clr5);
   color: var(--secondary-clr1);
-  padding: 1em;
+  padding: 2em;
+  flex-direction: row;
+  justify-content: space-between;
+  
 }
 
 @media(max-width: 720px) {

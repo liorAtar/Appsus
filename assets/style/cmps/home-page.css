@@ -1,9 +1,13 @@
-.app-header {
-  color: var(--secondary-clr1);
-  padding: 1em;
-  background-color: var(--clr5);
+.home-page{
+  font-family: Arial, Helvetica, sans-serif;
+  background: rgb(81, 81, 81);
+  text-align: center;
+  color: white;
 }
-
+.home-intro img{
+  width: 700px;
+  height: 400px;
+}
 @media(max-width: 720px) {
   .app-header {
     background-color: var(--clr4);
