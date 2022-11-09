@@ -61,7 +61,7 @@ function _createNotes() {
           id: 'n102',
           type: 'note-img',
           info: {
-            url: 'http://some-img/me',
+            url: 'https://blog.logrocket.com/wp-content/uploads/2021/09/ultimate-guide-SVGs-vue-js.png',
             title: 'Bobi and Me',
           },
           style: {

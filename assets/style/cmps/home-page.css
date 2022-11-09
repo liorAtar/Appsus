@@ -8,9 +8,16 @@
   width: 700px;
   height: 400px;
 }
+.home-intro > h1{
+  font-size: 35px;
+}
+.home-intro > p{
+  font-size: 18px;
+}
 .home-intro > h2{
   text-transform: uppercase;
 }
+
 .home-links{
   display: flex;
   justify-content: space-around;

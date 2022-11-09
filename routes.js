@@ -1,8 +1,8 @@
 import homePage from './views/app-home.cmp.js'
-import aboutPage from './views/app-about.cmp.js'
 import mailPage from './apps/mail/pages/mail-app.cmp.js'
 import keepPage from './apps/keep/pages/note-index.cmp.js'
 import mailDetails from './apps/mail/pages/mail-details.cmp.js'
+import aboutPage from './views/app-about.cmp.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
 

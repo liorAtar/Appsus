@@ -1,0 +1,12 @@
+.about-page{
+    background-color: rgb(93, 93, 93);
+    text-align: center;
+}
+.about-page h1{
+    font-size: 25px;
+    color: white;
+}
+.about-page h2{
+    font-size: 18px;
+    color: white;
+}

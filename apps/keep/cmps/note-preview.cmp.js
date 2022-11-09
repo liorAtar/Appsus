@@ -1,7 +1,6 @@
 export default {
   props: ['note'],
   template: `
-
   <section v-if="note" v-on:click.self="this.$emit('edit')">
     <h1>vue.</h1>
       <div v-on:click.self="this.$emit('edit')" :style="{backgroundColor: setBackGround()}" >
@@ -18,7 +17,6 @@ export default {
                   <p v-if="todo.doneAt">at: {{getDateDisplay(todo.doneAt)}}</p>
               </li>
           </ul>
-          <p v-if="noteLabe">label</p>
       </div>
       <br><br>
   </section>
@@ -39,7 +37,7 @@ export default {
         if ('backgroundColor' in this.note.style)
           return this.note.style.backgroundColor
       }
-      return '#F7F0F5'
+      return '#9107e7'
     },
     isPinned() {
       let isPin = this.note.isPinned ? true : false
@@ -112,7 +110,7 @@ export default {
     },
   },
   computed: {},
-  created(){
-    console.log('hi');
-  }
+  created() {
+    console.log('hi')
+  },
 }
