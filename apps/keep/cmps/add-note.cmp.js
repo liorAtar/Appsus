@@ -53,7 +53,7 @@ export default {
       this.isEdit = false
 
       this.newNoteDetails = {
-        title: this.noteTitle || 'No Title',
+        title: this.noteTitle || 'Undefined title',
         style: { backgroundColor: this.noteBgColor },
       }
 
