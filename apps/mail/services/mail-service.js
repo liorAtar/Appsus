@@ -89,5 +89,5 @@ function addNewMail(mail) {
 
 function updateIsStarred(mail) {
     mail.isStarred = !mail.isStarred
-    update(mail)
+    return update(mail)
 }

@@ -4,7 +4,7 @@ export default {
         <router-link to="/"> <img :src="imgUrl" /> </router-link> 
             <nav>
                 <router-link to="/about">About </router-link>
-                <router-link to="/mail">Mail </router-link>
+                <router-link to="/mail/inbox">Mail </router-link>
                 <router-link to="/keep">Keep</router-link>
             </nav>
         </header>
