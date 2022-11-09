@@ -1,4 +1,5 @@
 @import 'mail-list.css';
+@import 'mail-details.css';
 
 .mail-app {
     flex-grow: 1;
