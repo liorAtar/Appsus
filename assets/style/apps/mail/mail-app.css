@@ -1,8 +1,14 @@
 @import 'mail-menu.css';
 @import 'mail-list.css';
 @import 'mail-details.css';
+@import 'new-mail.css';
 
 .mail-app {
     display: flex;
     flex-grow: 1;
+    width: 100%;
+}
+
+.mails {
+    width: 100%;
 }

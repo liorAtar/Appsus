@@ -8,7 +8,7 @@ export default {
                 <hr />
                 <p>{{ mail.body }}</p>
                 <p>{{ sentAt }}</p>
-                <router-link to="/mail/inbox">Back</router-link>
+                <router-link :to="relocateTo">Back</router-link>
             </div>
         </section>
     `,
@@ -23,6 +23,11 @@ export default {
             .then(mail => this.mail = mail)
     },
     computed: {
+        relocateTo() {
+            return this.$route.fullPath.slice(0, this.$route.fullPath.length - this.$route.params.id.length - 1) +
+             '/' + 
+             mailService.getSelectedTab()
+        },
         sentAt() {
             // unix timestamp
             var timestamp = this.mail.sentAt;
