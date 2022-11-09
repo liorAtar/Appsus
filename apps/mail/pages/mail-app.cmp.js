@@ -1,15 +1,25 @@
 import { mailService } from "../services/mail-service.js"
 
 import mailList from '../cmps/mail-list.cmp.js'
+import mailDetails from './mail-details.cmp.js'
 
 export default {
     template: `
     <section class="mail-app">
         <h1>Mails App</h1>
+        <h1>Unread</h1>
         <mail-list 
             v-if="mails"
-            :mails="mailsToShow"
+            :mails="mailsUnread"
             @selected="selectMail" 
+            @updateIsStarred="updateStarStatus"
+            @remove="removeMail" />
+        <h1>Everything else </h1>
+        <mail-list 
+            v-if="mails"
+            :mails="allMails"
+            @selected="selectMail" 
+            @updateIsStarred="updateStarStatus"
             @remove="removeMail" />
     </section>
     `,
@@ -37,13 +47,20 @@ export default {
         selectMail(mail) {
             this.selectedMail = mail
         },
+        updateStarStatus(mail) {
+            mailService.updateIsStarred(mail).then(mail => this.selectedMail = mail)
+        },
     },
     computed: {
-        mailsToShow() {
-            return this.mails
+        mailsUnread() {
+            return this.mails.filter(mail => mail.isRead === false)
+        },
+        allMails() {
+            return this.mails.filter(mail => mail.isRead === true)
         },
     },
     components: {
         mailList,
+        mailDetails,
     }
 }

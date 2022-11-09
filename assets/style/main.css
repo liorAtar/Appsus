@@ -17,3 +17,9 @@
 /* Apps */
 @import 'apps/mail/mail-app.css';
 @import 'apps/note/note-app.css';
+
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
