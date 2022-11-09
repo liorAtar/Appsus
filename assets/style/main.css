@@ -17,7 +17,6 @@
 /* Apps */
 @import 'apps/mail/mail-app.css';
 @import 'apps/note/note-app.css';
-<<<<<<< HEAD
 /* TODO: export css below */
 
 .keep-app-main{
@@ -54,11 +53,9 @@
 .keep-app-list-note img{
     width: 30%
 }
-=======
 
 .main {
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
->>>>>>> e968784e1016c13c7aad0df3c61f1d3a7947ec75
