@@ -1,0 +1,12 @@
+.app-header {
+  color: var(--secondary-clr1);
+  padding: 1em;
+  background-color: var(--clr5);
+}
+
+@media(max-width: 720px) {
+  .app-header {
+    background-color: var(--clr4);
+    color: var(--secondary-clr2);
+  }
+}
