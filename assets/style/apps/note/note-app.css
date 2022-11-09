@@ -1,0 +1,9 @@
+.keep-app-main-page{
+    display: flex;
+    justify-content: center;
+    
+}
+.keep-app-main-page img{
+    width: 100px;
+    height: 100px;
+}
