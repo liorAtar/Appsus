@@ -1,0 +1,5 @@
+@import 'mail-list.css';
+
+.mail-app {
+    flex-grow: 1;
+}

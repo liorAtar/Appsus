@@ -1,0 +1,47 @@
+.mails-list ul{
+    list-style-type: none;
+}
+
+.mails-list ul li {
+    display: grid;
+    grid-template-columns: 1fr 18fr 1fr 1fr 1fr;
+    border: 1px solid lightgray;
+}
+
+.mails-list ul li:hover {
+    border: 1px solid rgb(167, 165, 165);
+    box-shadow: 0 0 3px;
+}
+
+.mail-star {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+    margin: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.mail-star:hover {
+    background-color: lightgray;
+    border-radius: 50%;
+}
+
+.mail-preview {
+    display: flex;
+    align-items: center;
+}
+
+.mail-preview .mail-subject {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.mail-read {
+    font-weight: normal
+}
+
+.mail-not-read {
+    font-weight: bold
+}

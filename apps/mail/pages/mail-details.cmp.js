@@ -1,13 +1,14 @@
 import { mailService } from '../services/mail-service.js'
 
 export default {
+    // props: ['mail'],
     template: `
         <section v-if="mail" class="book-details">
             <h2>{{ mail.subject }}<h2>
             <hr />
             <p>{{ mail.body }}</p>
             <p>{{ sentAt }}</p>
-            <router-link to="/book">Back</router-link>
+            <router-link to="/mail">Back</router-link>
         </section>
     `,
     data() {
@@ -41,7 +42,7 @@ export default {
             // extracting month from the date object as 2 digit
             var mth = ("0" + (d_obj.getMonth() + 1)).slice(-2);
 
-            return `${yr}/${mth}/${date} ${hrs}:${mins}:${sec}`
+            return `${date}/${mth}/${yr} ${hrs}:${mins}:${sec}`
         },
     },
     methods: {
