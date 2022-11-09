@@ -1,8 +1,9 @@
 export default {
     props: ['mail'],
     template: `
-        <router-link :to="'/mail/' + mail.id">
+        <router-link :to="mail.id">
             <section :title="mail.subject" class="mail-preview">
+                <p class="mail-subject" :class="isRead">{{ mail.subject }}</p>
                 <p class="mail-subject" :class="isRead">{{ mail.subject }}</p>
                 <p class="mail-date" :class="isRead">{{ sentAt }}</p>
             </section>
@@ -12,6 +13,9 @@ export default {
         console.log('mail', this.mail)
     },
     computed: {
+        getRoute(){
+            return this.$route.fullPath + '/'
+        },
         isRead() {
             return this.mail.isRead ? 'mail-read' : 'mail-not-read'
         },

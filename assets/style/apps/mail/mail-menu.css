@@ -1,0 +1,39 @@
+.mail-menu {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    background-color: #c7daff3d;
+}
+
+.mail-menu button {
+    width: 70%;
+    margin: 10px 0 0 10px;
+    border: none;
+    border-radius: 16px;
+    background-color: #b4e3fc;
+}
+
+.mail-menu button:hover {
+    box-shadow: 2px 2px 5px grey;
+}
+
+.mail-menu ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+.mail-menu ul li{
+    padding: 8px;
+    margin-right: 10px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.mail-menu ul li:hover:not(.is-selected){
+    background-color: lightgray;
+}
+
+.is-selected{
+    background-color: #98bef9;
+}
+

@@ -38,7 +38,7 @@ export default {
       this.$router.push('/keep')
     },
     moveToMail() {
-      this.$router.push('/mail')
+      this.$router.push('/mail/inbox')
     },
     moveToBooks() {
       this.$router.push('/books')
