@@ -17,3 +17,39 @@
 /* Apps */
 @import 'apps/mail/mail-app.css';
 @import 'apps/note/note-app.css';
+/* TODO: export css below */
+
+.keep-app-main{
+    margin: 0;
+    background-color: #4f4f4f;
+    color: #fefefe;
+    border: 1px solid #171a2141;
+    border-radius: 15px;
+    width: 95%;
+    margin: 1em auto 0 auto;
+}
+.keep-header{
+    text-transform: capitalize;
+    margin: 1em 0 1em 0;
+    padding-left: 0.5em;
+    padding-bottom: 0.5em;
+    display: flex;
+    border-bottom: 0.05em solid #ffffff16;
+}
+.keep-header img{
+    width: 3em;
+    width: 3em;
+    margin-right: 0.5em;
+}
+
+.notes-list-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    grid-auto-rows: auto;
+    padding: 1em;
+}
+
+.keep-app-list-note img{
+    width: 30%
+}
