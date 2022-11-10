@@ -4,8 +4,9 @@ import mailList from '../cmps/mail-list.cmp.js'
 export default {
     props: ['currMails', 'selectedMail'], 
     template: `
-    <section class="mails">
-        <div class="mails-type mail-checkbox" @click="updateRead(mail)"><input type="checkbox"/></div>
+    <section class="mails mail-sent">
+        <!-- <span class="mail-star" v-if="mail.isStarred" @click="updateStarred(mail)">&starf;</span>
+        <span class="mail-star" v-else @click="updateStarred(mail)">&star;</span> -->
         <mail-list 
             v-if="sentMails"
             :mails="allMails"
@@ -50,5 +51,13 @@ export default {
     },
     components: {
         mailList,
+    },
+    watch: {
+        currMails:{
+            handler(){
+                this.sentMails = this.currMails
+            },
+            deep: true
+        }
     }
 }

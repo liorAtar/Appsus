@@ -38,7 +38,7 @@ export default {
         body: this.body,
         isRead: false,
         isStarred: false,
-        sentAt: Date.now(),
+        sentAt: Math.floor(Date.now() / 1000),
         to: 
           { 
             email: this.recipient,

@@ -2,11 +2,14 @@ export default {
     props: ['selectedTab', 'isModalOpen'],
     template: `
         <section class="menu">
-            <div class="mail-menu" :class="isModalOpen? 'menu-open' : 'menu-close'">
-                <button class="menu-compose" @click="openNewMail">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                    <p>Compose</p>
-                </button>
+            <div class="mail-menu" :class="isOpen? 'menu-open' : 'menu-close'">
+                <div class="menu-header">
+                    <button class="menu-compose" @click="openNewMail">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                        <p>Compose</p>
+                    </button>
+                    <i @click="closeModal" class="fa fa-times btn-close" aria-hidden="true"></i>
+                </div>
                 <ul>
                     <li class="menu-tab" :class="tab === 'Inbox' ? 'is-selected' : ''" @click="updateSelectedTab">
                         <i class="fa fa-inbox" aria-hidden="true"></i>
@@ -31,11 +34,12 @@ export default {
     data() {
         return {
             tab: 'Inbox',
+            isOpen: false
         }
     },
     created() {
         this.tab = this.selectedTab
-        console.log('tab', this.tab)
+        this.isOpen = this.isModalOpen
     },
     methods: {
         updateSelectedTab(ev){
@@ -45,6 +49,17 @@ export default {
         },
         openNewMail() {
             this.$emit('openNewMail')
+        },
+        closeModal() {
+            this.isOpen = false
         }
     },
+    watch: {
+        isModalOpen:{
+            handler(){
+                this.isOpen = this.isModalOpen
+            },
+            deep: true
+        }
+    }
 }

@@ -20,7 +20,7 @@
     margin: 0;
 }
 
-@media(max-width: 800px) {
+@media(max-width: 850px) {
     .mail-details-to{
         flex-direction: column;
     }

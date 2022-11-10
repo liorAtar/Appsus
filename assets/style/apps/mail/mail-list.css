@@ -115,18 +115,22 @@
     font-weight: bold
 }
 
-@media(min-width:800px) {
+@media(min-width:850px) {
+    .mails-list ul li {
+        position: relative;
+    }
+
     .mails-list ul li:hover > .actions{
         display: flex;
         height: 50px;
-        position: fixed;
+        position: absolute;
         background-color: white;
         right: 16px;
         width: 160px;
     }
 }
 
-@media(max-width: 800px) {
+@media(max-width: 850px) {
     .mail-preview {
         display: grid;
         grid-template-columns: 5fr 1fr;
