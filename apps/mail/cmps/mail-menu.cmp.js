@@ -2,14 +2,27 @@ export default {
     props: ['selectedTab'],
     template: `
         <section class="mail-menu">
-            <button @click="openNewMail">Compose</button>
+            <button class="menu-compose" @click="openNewMail">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <p>Compose</p>
+            </button>
             <ul>
-                <router-link to="/mail/inbox">
-                    <li :class="tab === 'Inbox' ? 'is-selected' : ''" @click="updateSelectedTab">Inbox</li>
-                </router-link>
-                <li :class="tab === 'Starred' ? 'is-selected' : ''" @click="updateSelectedTab">Starred</li>
-                <li :class="tab === 'Sent' ? 'is-selected' : ''" @click="updateSelectedTab">Sent</li>
-                <li :class="tab === 'Drafts' ? 'is-selected' : ''" @click="updateSelectedTab">Drafts</li>
+                <li class="menu-tab" :class="tab === 'Inbox' ? 'is-selected' : ''" @click="updateSelectedTab">
+                    <i class="fa fa-inbox" aria-hidden="true"></i>
+                    <p>Inbox</p>
+                </li>
+                <li class="menu-tab" :class="tab === 'Starred' ? 'is-selected' : ''" @click="updateSelectedTab">
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <p>Starred</p>
+                </li>
+                <li class="menu-tab" :class="tab === 'Sent' ? 'is-selected' : ''" @click="updateSelectedTab">
+                    <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                    <p>Sent</p>
+                </li>
+                <li class="menu-tab" :class="tab === 'Draft' ? 'is-selected' : ''" @click="updateSelectedTab">
+                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                    <p>Draft</p>
+                </li>
             </ul>
         </section>
     `,

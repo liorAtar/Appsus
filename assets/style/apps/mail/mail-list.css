@@ -5,7 +5,8 @@
 
 .mails-list ul li {
     display: grid;
-    grid-template-columns: 1fr 18fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 20fr;
+    padding: 0 5px;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
     border-left: 1px solid transparent;
@@ -18,20 +19,60 @@
 }
 
 .mails-list ul li:hover > .actions{
-    visibility: visible;
+    display: flex;
+    height: 50px;
+    position: fixed;
+    background-color: white;
+    right: 5px;
+    width: 160px;
+}
+
+.mails-list ul .mail-read:hover .actions{
+    background-color: #eef2f8;
+}
+
+.mails-list ul li .actions{
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.mails-list ul li .actions i:hover {
+    background-color: lightgray;
+    border-radius: 50px;
+}
+
+.mails-list ul li .actions i{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .mails-list ul .mail-read {
-    background-color: #cfdcf63d;
+    background-color: #eef2f8;
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
 }
 
-.mails-list ul li .actions{
-    visibility: hidden;
+.mails-list ul li .mail-checkbox {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    border: none;
+    background-color: transparent;
 }
 
-.mail-star {
+.mails-list ul li .mail-checkbox:hover {
+    background-color: lightgray;
+    border-radius: 50px;
+}
+
+.mails-list ul li .mail-star {
     height: 40px;
     width: 40px;
     display: flex;
@@ -43,21 +84,31 @@
     cursor: pointer;
 }
 
-.mail-star:hover {
+.mails-list ul li .mail-star:hover {
     background-color: lightgray;
     border-radius: 50px;
 }
 
 .mail-preview {
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 5fr 1fr;
     align-items: center;
     justify-content: space-between;
     height: 100%;
+    gap: 50px;
 }
 
 .mail-preview .mail-subject {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.mail-preview .mail-body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .mail-preview .mail-date{

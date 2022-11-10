@@ -15,6 +15,7 @@ export const mailService = {
   query,
   remove,
   get,
+  updateIsRead,
   updateIsStarred,
   addNewMail,
   getSelectedTab,
@@ -186,3 +187,9 @@ function updateIsStarred(mail) {
   mail.isStarred = !mail.isStarred;
   return update(mail);
 }
+
+function updateIsRead(mail) {
+  mail.isRead = !mail.isRead;
+  return update(mail);
+}
+
