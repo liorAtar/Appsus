@@ -10,13 +10,13 @@ export default {
             :mails="allMails"
             @selected="selectMail" 
             @updateStarred="updateStarStatus"
+            @updateRead="updateReadStatus"
             @remove="removeMail" />
     </section>
     `,
     data() {
         return {
             mails: null,
-            starsCount: null,
             selectedMail: null,
         }
     },
@@ -49,22 +49,15 @@ export default {
         },
         updateStarStatus(mail) {
             mailService.updateIsStarred(mail).then(mail => this.selectedMail = mail)
-            this.starsCount = this.mails.filter(mail => mail.status === "sent" && mail.isStarred === true).length
+        },
+        updateReadStatus(mail) {
+            mailService.updateIsRead(mail).then(mail => this.selectedMail = mail)
         },
     },
     computed: {
         allMails() {
             return this.mails && this.mails.filter(mail => mail.status === "sent").reverse()
         },
-    },
-    watch: {
-        starsCount: {
-            handler(){
-                console.log('Something changed')
-                this.loasMails()
-            },
-            immediate: true
-        }
     },
     components: {
         mailList,

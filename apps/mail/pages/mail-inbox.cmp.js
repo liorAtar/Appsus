@@ -11,6 +11,7 @@ export default {
             :mails="mailsUnread"
             @selected="selectMail" 
             @updateStarred="updateStarStatus"
+            @updateRead="updateReadStatus"
             @remove="removeMail" />
         <h1>Everything else </h1>
         <mail-list 
@@ -18,6 +19,7 @@ export default {
             :mails="allMails"
             @selected="selectMail" 
             @updateStarred="updateStarStatus"
+            @updateRead="updateReadStatus"
             @remove="removeMail" />
     </section>
     `,
@@ -47,6 +49,9 @@ export default {
         },
         updateStarStatus(mail) {
             mailService.updateIsStarred(mail).then(mail => this.selectedMail = mail)
+        },
+        updateReadStatus(mail) {
+            mailService.updateIsRead(mail).then(mail => this.selectedMail = mail)
         },
     },
     computed: {

@@ -5,6 +5,24 @@
     background-color: #c7daff3d;
 }
 
+.mail-menu .menu-compose {
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+}
+
+.mail-menu .menu-compose p{
+    margin: 0;
+}
+
+.mail-menu .menu-tab {
+    display: flex;
+}
+
+.mail-menu .menu-tab p {
+    margin: 0 0 0 10px;
+}
+
 .mail-menu button {
     width: 70%;
     margin: 10px 0 0 10px;

@@ -1,19 +1,9 @@
 import { mailService } from "../services/mail-service.js"
-
 import mailList from '../cmps/mail-list.cmp.js'
 
 export default {
     template: `
     <section class="mails">
-        <h1>Unread</h1>
-        <mail-list 
-            v-if="mails"
-            :mails="mailsUnread"
-            @selected="selectMail" 
-            @updateStarred="updateStarStatus"
-            @updateRead="updateReadStatus"
-            @remove="removeMail" />
-        <h1>Everything else </h1>
         <mail-list 
             v-if="mails"
             :mails="allMails"
@@ -30,13 +20,15 @@ export default {
         }
     },
     created() {
-        mailService.query()
-            .then(mails => {
-                this.mails = mails
-                console.log('mails', mails)
-            })
+        this.loasMails()
     },
     methods: {
+        loasMails(){
+            mailService.query()
+            .then(mails => {
+                this.mails = mails
+            })
+        },
         removeMail(mailId) {
             mailService.remove(mailId)
                 .then(() => {
@@ -55,11 +47,8 @@ export default {
         },
     },
     computed: {
-        mailsUnread() {
-            return this.mails.filter(mail => mail.isRead === false && mail.isStarred === true)
-        },
         allMails() {
-            return this.mails.filter(mail => mail.isRead === true && mail.isStarred === true)
+            return this.mails.filter(mail => mail.status === "draft")
         },
     },
     components: {
