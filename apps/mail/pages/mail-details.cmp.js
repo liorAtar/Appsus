@@ -27,7 +27,6 @@ export default {
         mailService.get(id)
             .then(mail => {
                 this.mail = mail
-                console.log('curr mail', mail)
             })
     },
     computed: {

@@ -50,5 +50,13 @@ export default {
     },
     components: {
         mailList,
+    },
+    watch: {
+        currMails:{
+            handler(){
+                this.sentMails = this.currMails
+            },
+            deep: true
+        }
     }
 }

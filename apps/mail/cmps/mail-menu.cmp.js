@@ -35,7 +35,6 @@ export default {
     },
     created() {
         this.tab = this.selectedTab
-        console.log('tab', this.tab)
     },
     methods: {
         updateSelectedTab(ev){

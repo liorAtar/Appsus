@@ -40,8 +40,16 @@ export default {
     },
     computed: {
         allMails() {
-            return this.draftMails.filter(mail => mail.status === "draft")
+            return this.draftMails.filter(mail => mail.status === "draft").reverse()
         },
+    },
+    watch: {
+        currMails:{
+            handler(){
+                this.draftMails = this.currMails
+            },
+            deep: true
+        }
     },
     components: {
         mailList,

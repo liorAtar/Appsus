@@ -9,9 +9,6 @@ export default {
             </section>
         </router-link>
     `,
-    created() {
-        console.log('mail', this.mail)
-    },
     computed: {
         getRoute(){
             return this.$route.fullPath + '/'

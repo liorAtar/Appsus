@@ -76,6 +76,16 @@
     box-shadow: inset 1px 0px 20px lightgrey;
 }
 
+.menu-filter .btn-unread-on {
+    background-color: #98bef9;
+    color: black;
+    border: navajowhite;
+}
+
+.menu-filter .btn-unread-on i{
+    margin: 5px;
+}
+
 @media(max-width: 800px) {
     .menu-filter{
         height: fit-content;

@@ -6,7 +6,14 @@ import addMail from '../cmps/add-mail.cmp.js'
 export default {
     template: `
     <section class="main-mail-app">
-        <mail-filter @updateModal="updateMenuModal"/>
+        <mail-filter 
+            :selectedTab="selectedTab"
+            @updateModal="updateMenuModal" 
+            @updateUnreadFilter="updateFilteredBy" 
+            @filterByDate="updateFilterByDate" 
+            @filterByTitle="updateFilterByTitle" 
+            @filterBySearch="filterBySearch"
+        />
         <div class="mail-app">
             <mail-menu @openNewMail="openModal" :selectedTab="selectedTab" @updateTab="setTab" :isModalOpen="isModalOpen"/>
             <section class="mail-view">
@@ -31,20 +38,28 @@ export default {
             isModalOpen: false,
             selectedTab: 'Inbox',
             mails: null,
+            allMails: null,
             selectedMail: null,
+            filteredBy: {
+                isUnread: false,
+                date: '',
+                title: ''
+            }
         }
     },
     created() {
+        mailService.query()
+            .then(resMails => {
+                this.allMails = resMails
+        })
         this.loadMails()
         this.selectedTab = mailService.getSelectedTab()
-        console.log('this.selectedTab', this.selectedTab)
     },
     methods: {
         loadMails() {
             mailService.query()
-            .then(allMails => {
-                this.mails = allMails
-                console.log('mails', this.mails)
+            .then(resMails => {
+                this.mails = resMails
             })
         },
         openModal() {
@@ -54,13 +69,58 @@ export default {
             this.isNewMailOpen = false
         },
         setTab(tab) {
+            this.mails = this.allMails
             mailService.setSelectedTab(tab)
+            this.selectedTab = tab
+            this.filterMailsByDate()
         },
         updateMenuModal() {
             this.isModalOpen = !this.isModalOpen
         },
-
-        // NEW INBOX
+        updateFilteredBy() {
+            this.filteredBy.isUnread = !this.filteredBy.isUnread
+            if(this.selectedTab === 'Sent' && this.filteredBy.isUnread) {
+                this.mails = this.mails.filter(mail => !mail.isRead && mail.status === 'sent')
+            }else {
+                this.loadMails()
+            }
+        },
+        updateFilterByDate(type){
+            this.filteredBy.date = type
+            this.filterMailsByDate()
+        },
+        updateFilterByTitle(type){
+            this.filteredBy.title = type
+            this.filterMailsByTitle()
+        },
+        filterMailsByDate(){
+            this.mails = this.allMails
+            if(this.filteredBy.date === 'New To Old') {
+                this.mails = this.mails.sort((mail1, mail2) => +new Date(mail1.sentAt) - +new Date(mail2.sentAt));
+            } else if(this.filteredBy.date === 'Old To New') {
+                this.mails = this.mails.sort((mail1, mail2) => +new Date(mail2.sentAt) - +new Date(mail1.sentAt));
+            }
+        },
+        filterMailsByTitle(){
+            this.mails = this.allMails
+            if(this.filteredBy.title === 'A - Z') {
+                this.mails = this.mails.sort(
+                    (mail1, mail2) => (mail2.subject).localeCompare(mail1.subject))
+            } else if(this.filteredBy.title === 'Z - A') {
+                this.mails = this.mails.sort(
+                    (mail1, mail2) => (mail1.subject).localeCompare(mail2.subject))
+            }
+        },
+        filterBySearch(searchValue) {
+            this.loadMails()
+            this.mails = this.mails.filter(mail => 
+                mail.subject.includes(searchValue) ||
+                mail.from.email.includes(searchValue) ||
+                mail.from.fullname.includes(searchValue) ||
+                mail.to.email.includes(searchValue) ||
+                mail.to.fullname.includes(searchValue)
+            )
+        },
         addMail(payload){
             mailService.addNewMail(payload)
             .then( mail => {
@@ -73,6 +133,7 @@ export default {
                 .then(() => {
                     const idx = this.mails.findIndex(mails => mails.id === mailId)
                     this.mails.splice(idx, 1)
+                    this.loadMails()
                 })
         },
         selectMail(mail) {

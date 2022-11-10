@@ -19,21 +19,15 @@ export default {
             </ul>
         </section>
     `,
-    created() {
-        console.log('mails in list', this.mails)
-    },
     methods: {
         remove(mailId) {
             this.$emit('remove', mailId)
-            console.log('delete mail', mailId)
         },
         updateStarred(mailId) {
             this.$emit('updateStarred', mailId)
-            console.log('is starred mail', mailId)
         },
         updateRead(mailId) {
             this.$emit('updateRead', mailId)
-            console.log('is read mail', mailId)
         },
         selectMail(mail){
             this.$emit('selected', mail)
