@@ -4,6 +4,7 @@ import mailList from '../cmps/mail-list.cmp.js'
 export default {
     template: `
     <section class="mails">
+        <div class="mails-type mail-checkbox" @click="updateRead(mail)"><input type="checkbox"/></div>
         <mail-list 
             v-if="mails"
             :mails="allMails"

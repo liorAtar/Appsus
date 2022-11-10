@@ -1,13 +1,19 @@
 import { mailService } from '../services/mail-service.js'
+import mailFilter from '../cmps/mail-filter.cmp.js'
 import mailMenu from '../cmps/mail-menu.cmp.js'
 import addMail from '../cmps/add-mail.cmp.js'
 
 export default {
     template: `
-    <section class="mail-app">
-        <mail-menu @openNewMail="addMail" :selectedTab="selectedTab" @updateTab="setTab"/>
-        <router-view />
-        <add-mail :class="isModalOpen" :isOpen="isNewMailOpen" @closeNewMail="closeModal"/>
+    <section class="main-mail-app">
+        <mail-filter />
+        <div class="mail-app">
+            <mail-menu @openNewMail="addMail" :selectedTab="selectedTab" @updateTab="setTab"/>
+            <section class="mail-view">
+                <router-view />
+            </section>
+            <add-mail :class="isModalOpen" :isOpen="isNewMailOpen" @closeNewMail="closeModal"/>
+        </div>
     </section>
     `,
     data() {
@@ -37,6 +43,7 @@ export default {
         }
     },
     components: {
+        mailFilter,
         mailMenu,
         addMail,
     }

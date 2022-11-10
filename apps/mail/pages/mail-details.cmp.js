@@ -3,12 +3,17 @@ import { mailService } from '../services/mail-service.js'
 export default {
     template: `
         <section v-if="mail" class="mail-details">
+            <router-link :to="relocateTo">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </router-link>
             <div class="mail-details-info">
-                <h2>{{ mail.subject }}</h2>
+                <h2 class="mail-details-subject">{{ mail.subject }}</h2>
+                <p class="mail-details-from">{{ mail.from.fullname }} &lt;{{ mail.from.email }}&gt;</p>
+                <div class="mail-details-to">
+                    <p class="mail-details-from">to &lt;{{ mail.to.email }}&gt;</p>
+                    <p>{{ sentAt }}</p></div>
                 <hr />
                 <p>{{ mail.body }}</p>
-                <p>{{ sentAt }}</p>
-                <router-link :to="relocateTo">Back</router-link>
             </div>
         </section>
     `,
@@ -20,7 +25,10 @@ export default {
     created() {
         const id = this.$route.params.id
         mailService.get(id)
-            .then(mail => this.mail = mail)
+            .then(mail => {
+                this.mail = mail
+                console.log('curr mail', mail)
+            })
     },
     computed: {
         relocateTo() {

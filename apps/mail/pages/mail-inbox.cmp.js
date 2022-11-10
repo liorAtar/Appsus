@@ -5,7 +5,7 @@ import mailList from '../cmps/mail-list.cmp.js'
 export default {
     template: `
     <section class="mails" v-if="mails">
-        <h1>Unread</h1>
+        <h1 class="mails-type">Unread</h1>
         <mail-list 
             v-if="mails"
             :mails="mailsUnread"
@@ -13,7 +13,7 @@ export default {
             @updateStarred="updateStarStatus"
             @updateRead="updateReadStatus"
             @remove="removeMail" />
-        <h1>Everything else </h1>
+        <h1 class="mails-type">Everything else </h1>
         <mail-list 
             v-if="mails"
             :mails="allMails"

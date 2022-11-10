@@ -72,7 +72,11 @@ function getMails() {
       isRead: true,
       isStarred: false,
       sentAt: 1667636246,
-      from: "nono@momo.com",
+      from: {
+        email: "nono@momo.com",
+        fullname: "Nono",
+      },
+      to: loggedinUser
     },
     {
       id: "e102",
@@ -82,7 +86,11 @@ function getMails() {
       isRead: true,
       isStarred: false,
       sentAt: 1667722646,
-      from: "lolo@momo.com",
+      from: {
+        email: "lolo@momo.com",
+        fullname: "LoLo Nu",
+      },
+      to: loggedinUser
     },
     {
       id: "e103",
@@ -92,7 +100,12 @@ function getMails() {
       isRead: false,
       isStarred: true,
       sentAt: 1668000438,
+      from: {
+        email: "lili@momo.com",
+        fullname: "Lili Lu",
+      },
       from: "lili@momo.com",
+      to: loggedinUser
     },
     {
       id: "e104",
@@ -102,7 +115,11 @@ function getMails() {
       isRead: false,
       isStarred: false,
       sentAt: 1667549846,
-      from: "nuki@momo.com",
+      from: {
+        email: "nuki@momo.com",
+        fullname: "Nuki Luki",
+      },
+      to: loggedinUser
     },
     {
       id: "e105",
@@ -112,7 +129,11 @@ function getMails() {
       isRead: true,
       isStarred: false,
       sentAt: 1667636246,
-      to: "puki@momo.com",
+      from: loggedinUser,
+      to: {
+        email: "puki@momo.com",
+        fullname: "Puki Muki",
+      }
     },
     {
       id: "e106",
@@ -122,7 +143,11 @@ function getMails() {
       isRead: true,
       isStarred: false,
       sentAt: 1667722646,
-      to: "muki@momo.com",
+      from: loggedinUser,
+      to: {
+        email: "muki@momo.com",
+        fullname: "Muki Bo",
+      }
     },
     {
       id: "e107",
@@ -132,7 +157,11 @@ function getMails() {
       isRead: false,
       isStarred: true,
       sentAt: 1668000438,
-      to: "shuki@momo.com",
+      from: loggedinUser,
+      to: {
+        email: "shuki@momo.com",
+        fullname: "Shuki Sho",
+      }
     },
     {
       id: "e108",
@@ -142,7 +171,11 @@ function getMails() {
       isRead: true,
       isStarred: false,
       sentAt: 1667636246,
-      to: "puki@momo.com",
+      from: loggedinUser,
+      to: {
+        email: "puki@momo.com",
+        fullname: "Puki Muki",
+      }
     },
     {
       id: "e109",
@@ -152,7 +185,11 @@ function getMails() {
       isRead: true,
       isStarred: false,
       sentAt: 1667722646,
-      to: "muki@momo.com",
+      from: loggedinUser,
+      to: {
+        email: "muki@momo.com",
+        fullname: "Muki Bo",
+      }
     },
     {
       id: "e110",
@@ -162,7 +199,11 @@ function getMails() {
       isRead: false,
       isStarred: true,
       sentAt: 1668000438,
-      to: "shuki@momo.com",
+      from: loggedinUser,
+      to: {
+        email: "shuki@momo.com",
+        fullname: "Shuki Sho",
+      }
     },
     {
         id: "e111",
@@ -172,7 +213,11 @@ function getMails() {
         isRead: false,
         isStarred: true,
         sentAt: 1668000438,
-        to: "shuki@momo.com",
+        from: loggedinUser,
+        to: {
+          email: "shuki@momo.com",
+          fullname: "Shuki Sho",
+        }
       },
   ];
   return mails;
@@ -180,6 +225,7 @@ function getMails() {
 
 function addNewMail(mail) {
   mail.id = utilService.makeId()
+  mail.from = loggedinUser
   return storageService.post(MAIL_KEY, mail)
 }
 

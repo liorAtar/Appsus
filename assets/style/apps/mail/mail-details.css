@@ -1,8 +1,23 @@
 .mail-details {
+    width: 100%;
     display: flex;
-    flex-grow: 1;
+    padding: 20px;
+    background-color: white;
+    border-radius: 30px;
+    margin: 15px;
 }
 
-.mail-details-info {
+.mail-details .mail-details-info {
     width: -webkit-fill-available;
+    color: black;
+    padding: 20px;
+}
+
+.mail-details .mail-details-info .mail-details-to {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mail-details .mail-details-info .mail-details-to p{
+    margin: 0;
 }
