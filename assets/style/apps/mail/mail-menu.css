@@ -57,12 +57,32 @@
     background-color: #98bef9;
 }
 
-@media(max-width: 800px) {
+.menu .btn-close {
+    display: none;
+}
+
+@media(max-width: 850px) {
     .mail-menu {
         position: fixed;
         height: 100%;
         background-color: #e6efff;
         box-shadow: 20px 0px 20px -20px;
+        bottom: 0;
+        width: 100%;
+        z-index: 10;
+    }
+
+    .menu-header {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .menu .btn-close {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
     }
 
     .menu-open {
@@ -72,6 +92,6 @@
 
     .menu-close {
         transition: left 3s;
-        left: -100%;
+        left: -105%;
     }
 }

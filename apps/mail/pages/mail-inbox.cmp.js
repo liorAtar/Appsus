@@ -3,7 +3,7 @@ import mailList from '../cmps/mail-list.cmp.js'
 export default {
     props: ['currMails', 'selectedMail'], 
     template: `
-    <section class="mails" v-if="inboxMails">
+    <section class="mails mail-inbox" v-if="inboxMails">
         <h1 v-if="mailsUnread.length" class="mails-type">Unread</h1>
         <mail-list 
             v-if="inboxMails"
@@ -48,7 +48,7 @@ export default {
     },
     computed: {
         mailsUnread() {
-            return this.inboxMails.filter(mail => mail.isRead === false && mail.status === "inbox")
+            return this.inboxMails.filter(mail => mail.isRead === false && mail.status === "inbox").reverse()
         },
         allMails() {
             return this.inboxMails.filter(mail => mail.isRead === true && mail.status === "inbox").reverse()
