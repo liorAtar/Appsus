@@ -75,13 +75,14 @@
     }
 
     .mail-view {
+        height: 100%;
         width: 100%;
         background-color: white;
         border-radius: 0px;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        height: 100%;
+        margin: 0;
     }
 }
 
