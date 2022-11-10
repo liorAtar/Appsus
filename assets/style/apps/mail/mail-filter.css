@@ -29,6 +29,7 @@
 .menu-filter .menu-header .gmail-logo{
     height: 25px;
     width: 30px;
+    content: url('../../../imgs/gmail-logo.png');
 }
 
 .menu-filter .menu-header i {
