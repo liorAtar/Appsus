@@ -3,8 +3,8 @@ export default {
     template: `
         <router-link :to="mail.id">
             <section :title="mail.subject" class="mail-preview" :class="isRead">
-                <p class="mail-subject">{{ mail.subject }}</p>
-                <p class="mail-body">{{ mail.body}}</p>
+                <p class="mail-subject">{{ getFullname }}</p>
+                <p class="mail-body">{{ mail.subject}}</p>
                 <p class="mail-date">{{ sentAt }}</p>
             </section>
         </router-link>
@@ -15,6 +15,9 @@ export default {
     computed: {
         getRoute(){
             return this.$route.fullPath + '/'
+        },
+        getFullname(){
+            return this.mail.status === 'sent'? 'To:' + this.mail.to.fullname : this.mail.from.fullname
         },
         isRead() {
             return this.mail.isRead ? 'read' : 'not-read'

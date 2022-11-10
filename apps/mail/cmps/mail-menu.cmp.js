@@ -1,13 +1,8 @@
 export default {
-    props: ['selectedTab'],
+    props: ['selectedTab', 'isModalOpen'],
     template: `
         <section class="menu">
-            <!-- <div class="menu-header" @click="modalCloseOpen">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-                <img class="gmail-logo" src="../../../assets/imgs/gmail-logo.png" />
-                <p>Gmail</p>
-            </div> -->
-            <div class="mail-menu" :class="menuIsOpen? 'menu-open' : 'menu-close'">
+            <div class="mail-menu" :class="isModalOpen? 'menu-open' : 'menu-close'">
                 <button class="menu-compose" @click="openNewMail">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                     <p>Compose</p>
@@ -36,7 +31,6 @@ export default {
     data() {
         return {
             tab: 'Inbox',
-            menuIsOpen: true,
         }
     },
     created() {
@@ -51,9 +45,6 @@ export default {
         },
         openNewMail() {
             this.$emit('openNewMail')
-        },
-        modalCloseOpen() {
-            this.menuIsOpen = !this.menuIsOpen
         }
     },
 }

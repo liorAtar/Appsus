@@ -23,10 +23,24 @@
     width: 100%;
     background-color: white;
     border-radius: 30px;
-    margin: 15px
+    margin: 0 15px 15px 0
 }
 
 .mails .mails-type {
     padding: 10px;
     margin: 10px;
+}
+
+@media(max-width: 800px) {
+    .mail-app {
+        display: block;
+    }
+
+    .mail-view {
+        width: 95%;
+        background-color: white;
+        border-radius: 30px;
+        margin: 10px auto;
+        display: flex;
+    }
 }

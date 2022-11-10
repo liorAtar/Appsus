@@ -104,7 +104,6 @@ function getMails() {
         email: "lili@momo.com",
         fullname: "Lili Lu",
       },
-      from: "lili@momo.com",
       to: loggedinUser
     },
     {

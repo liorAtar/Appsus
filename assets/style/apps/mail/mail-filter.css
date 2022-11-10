@@ -1,10 +1,17 @@
+.menu-filter {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    background-color: #c7daff3d;
+}
+
 .menu-filter .menu-header{
     height: 50px;
+    min-width: 200px;
     display: flex;
     align-items: center;
     gap: 5px;
     padding: 10px 20px;
-    background-color: #c7daff3d;
 }
 
 .menu-filter .menu-header p{
@@ -28,4 +35,44 @@
 .menu-filter .menu-header i:hover {
     background-color: lightgray;
     border-radius: 50px;
+}
+
+.menu-filter .search .search-icon {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    padding-left: 1rem;
+    z-index: 1;
+}
+
+.menu-filter .search .search-input {
+    height: 50px;
+    width: 50vw;
+    position: relative;
+    padding-left: 3rem;
+    background-color: #a3bdef3d;
+    border: none;
+    border-radius: 10px;
+}
+
+.menu-filter .search .search-input:focus-visible {
+    outline: none;
+    background-color: white;
+    box-shadow: 1px 1px 6px grey;
+}
+
+@media(max-width: 800px) {
+    .menu-filter{
+        height: fit-content;
+        display: block;
+    }
+
+    .menu-filter .search {
+        padding: 10px 20px;
+    }
+    
+    .menu-filter .search .search-icon {
+        padding-left: 36px;
+    }
 }

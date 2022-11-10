@@ -12,7 +12,7 @@
 .modal-open {
     position: fixed;
     right: 5px;
-    bottom: 5px;
+    bottom: 60px
 }
 
 .modal-close {

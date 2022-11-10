@@ -6,19 +6,20 @@ import addMail from '../cmps/add-mail.cmp.js'
 export default {
     template: `
     <section class="main-mail-app">
-        <mail-filter />
+        <mail-filter @updateModal="updateMenuModal"/>
         <div class="mail-app">
-            <mail-menu @openNewMail="addMail" :selectedTab="selectedTab" @updateTab="setTab"/>
+            <mail-menu @openNewMail="addMail" :selectedTab="selectedTab" @updateTab="setTab" :isModalOpen="isModalOpen"/>
             <section class="mail-view">
                 <router-view />
             </section>
-            <add-mail :class="isModalOpen" :isOpen="isNewMailOpen" @closeNewMail="closeModal"/>
+            <add-mail :class="isMenuModalOpen" :isOpen="isNewMailOpen" @closeNewMail="closeModal"/>
         </div>
     </section>
     `,
     data() {
         return {
             isNewMailOpen: false,
+            isModalOpen: false,
             selectedTab: 'Inbox'
         }
     },
@@ -36,9 +37,12 @@ export default {
         setTab(tab) {
             mailService.setSelectedTab(tab)
         },
+        updateMenuModal() {
+            this.isModalOpen = !this.isModalOpen
+        },
     },
     computed: {
-        isModalOpen() {
+        isMenuModalOpen() {
             return this.isNewMailOpen ? 'modal-open' : 'modal-close'
         }
     },
