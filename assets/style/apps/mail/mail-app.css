@@ -1,14 +1,46 @@
+@import 'mail-filter.css';
 @import 'mail-menu.css';
 @import 'mail-list.css';
 @import 'mail-details.css';
 @import 'new-mail.css';
 
-.mail-app {
+.main-mail-app {
     display: flex;
+    flex-direction: column;
+    background-color: #c7daff3d;
     flex-grow: 1;
-    width: 100%;
 }
 
-.mails {
+.mail-app {
+    height: 100%;
     width: 100%;
+    display: flex;
+    flex-grow: 1;
+    background-color: #c7daff3d;
+}
+
+.mail-view {
+    width: 100%;
+    background-color: white;
+    border-radius: 30px;
+    margin: 0 15px 15px 0
+}
+
+.mails .mails-type {
+    padding: 10px;
+    margin: 10px;
+}
+
+@media(max-width: 800px) {
+    .mail-app {
+        display: block;
+    }
+
+    .mail-view {
+        width: 95%;
+        background-color: white;
+        border-radius: 30px;
+        margin: 10px auto;
+        display: flex;
+    }
 }

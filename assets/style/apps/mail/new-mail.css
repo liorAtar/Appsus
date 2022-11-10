@@ -9,9 +9,9 @@
   box-shadow: 1px 0px 20px grey;
 }
 .modal-open {
-  position: fixed;
-  right: 5px;
-  bottom: 5px;
+    position: fixed;
+    right: 5px;
+    bottom: 60px
 }
 .modal-close {
   position: fixed;

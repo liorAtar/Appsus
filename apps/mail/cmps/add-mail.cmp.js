@@ -39,7 +39,11 @@ export default {
         isRead: false,
         isStarred: false,
         sentAt: Date.now(),
-        to: this.recipient,
+        to: 
+          { 
+            email: this.recipient,
+            fullname: this.recipient.slice(0, this.recipient.indexOf('@'))
+        },
       };
       this.$emit("closeNewMail");
       eventBus.emit('add-mail', mail)
