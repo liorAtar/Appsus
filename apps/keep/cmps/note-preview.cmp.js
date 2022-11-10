@@ -4,7 +4,7 @@ export default {
   <section v-if="note" v-on:click.self="this.$emit('edit')">
     <!-- <h1>vue.</h1> -->
       <div v-on:click.self="this.$emit('edit')" :style="{backgroundColor: setBackGround()}" >
-          <img v-on:click.self="this.$emit('edit')" v-if="getUrl()" :src='getUrl()' alt="unknown URL ;)">
+          <img v-on:click.self="this.$emit('edit')" v-if="getUrl()" :src='getUrl()' alt="undefined">
           <h3 v-on:click.self="this.$emit('edit')">{{getTitle()}}</h3>
           <p v-on:click.self="this.$emit('edit')" v-if="getNoteTxt()" class="keep-note-info"> {{getNoteTxt()}}</p>
           <iframe v-if="getVUrl()" :src='getVUrl()'></iframe>
@@ -12,9 +12,9 @@ export default {
               <li>
                   <span class="keep-span-todo"> 
                       <button title="delete todo" v-on:click="deleteTodo(todo,note)">🗙</button>
-                      <p @click="toggleToDo(todo,note)" v-if="todo.txt" v-bind:style= "[todo.doneAt ? {'text-decoration': 'line-through'} : {'text-decoration': none}]">{{todo.txt}}</p>
+                      <p @click="toggleToDo(todo,note)" v-if="todo.txt" v-bind:style= "[todo.doneAt ? {'text-decoration': 'line-through'} : {'text-decoration': 'none'}]">{{todo.txt}}</p>
                   </span>
-                  <p v-if="todo.doneAt">at: {{getDateDisplay(todo.doneAt)}}</p>
+                  <p v-if="todo.doneAt">Done {{getDateDisplay(todo.doneAt)}}</p>
               </li>
           </ul>
       </div>
@@ -87,6 +87,7 @@ export default {
     deleteTodo(todo, note) {
       this.$emit('todoDel', note, todo)
     },
+
     getDateDisplay(timeStamp) {
       var newDate = new Date(timeStamp)
 

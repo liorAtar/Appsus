@@ -1,93 +1,148 @@
 .new-mail {
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    height: 600px;
-    background-color: white;
-    border-radius: 20px;
-    transition: 1s;
-    box-shadow: 1px 0px 20px grey;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 600px;
+  background-color: white;
+  border-radius: 20px;
+  transition: 1s;
+  box-shadow: 1px 0px 20px grey;
 }
-
 .modal-open {
-    position: fixed;
-    right: 5px;
-    bottom: 5px;
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
 }
-
 .modal-close {
-    position: fixed;
-    right: 0;
-    bottom: -100%;
+  position: fixed;
+  right: 0;
+  bottom: -100%;
 }
-
 .new-mail .title {
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #cfdcf63d;
-    padding: 15px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #cfdcf63d;
+  padding: 15px;
+}
+.keep-modal-container {
+  padding: 1.5em;
+  background-color: #d2d7e3;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 33%);
+  transition: all 0.2s ease;
+  margin: 0em;
+  width: 35em;
+  height: 25em;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  gap: 1em;
+  justify-content: center;
+}
+.keep-modal-container input:first-of-type {
+  height: fit-content;
+  padding: 0.5em 0 0.5em 0.1em;
+  font-size: larger;
 }
 
+.keep-modal-container textarea:first-of-type {
+  padding: 0.5em 0 0.5em 0.1em;
+  height: 100%;
+}
+
+.keep-modal-container span > button {
+  outline: #171a21 1px solid;
+  font-size: 1.5em;
+  border: none;
+  box-sizing: border-box;
+}
+
+.keep-modal-container > span {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.keep-modal-container > span *:hover {
+  cursor: pointer;
+}
+.keep-add-todo-container {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.keep-add-todo-container button {
+  position: absolute;
+  bottom: -0.9995em;
+  margin: 0 0 0.1em 0.1em;
+}
+
+.keep-add-todo-container textarea {
+  width: 100%;
+  display: block;
+}
 .new-mail .title .close-btn {
-    height: fit-content;
-    width: fit-content;
-    margin: auto 0;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: cursive;
-    color: #505050;
-    background-color: transparent;
-    border: none;
+  height: fit-content;
+  width: fit-content;
+  margin: auto 0;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: cursive;
+  color: #505050;
+  background-color: transparent;
+  border: none;
 }
 
 .new-mail .mail-to {
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
 }
 
 .new-mail .mail-input {
-    border: none;
-    width: -webkit-fill-available;
+  border: none;
+  width: -webkit-fill-available;
 }
 
 .new-mail .mail-input:focus-visible {
-    outline: none;
-    border: none
+  outline: none;
+  border: none;
 }
 
 .new-mail hr {
-    margin: 0 auto;
-    width: 95%;
-    justify-self: center;
-    display: flex;
-    border: 0.1px solid #e6ecf8;
+  margin: 0 auto;
+  width: 95%;
+  justify-self: center;
+  display: flex;
+  border: 0.1px solid #e6ecf8;
 }
 
 .new-mail .mail-body {
-    height: -webkit-fill-available;
-    resize: none;
-    border: none;
-    padding: 10px;
+  height: -webkit-fill-available;
+  resize: none;
+  border: none;
+  padding: 10px;
 }
 
 .new-mail .mail-body:focus-visible {
-    outline: none;
-    border: none
+  outline: none;
+  border: none;
 }
 
 .new-mail .send-btn {
-    width: 100px;
-    margin: 10px;
-    background-color: #1056cd;
-    color: white;
-    border: none;
-    border-radius: 25px;
+  width: 100px;
+  margin: 10px;
+  background-color: #1056cd;
+  color: white;
+  border: none;
+  border-radius: 25px;
 }
 
 .new-mail .send-btn:hover {
-    box-shadow: 3px 3px 6px lightblue;
-    background-color: #2265d8;
+  box-shadow: 3px 3px 6px lightblue;
+  background-color: #2265d8;
 }

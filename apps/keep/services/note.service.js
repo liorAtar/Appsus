@@ -13,6 +13,7 @@ export const noteService = {
 }
 function updateNote(note) {
   storageService.put(KEEP_NOTE_KEY, note)
+  console.log('Note updated: ', note)
 }
 
 function query() {
@@ -20,6 +21,7 @@ function query() {
 }
 
 function remove(noteId) {
+  console.log('Note Removed: ', noteId)
   return storageService.remove(KEEP_NOTE_KEY, noteId)
 }
 
@@ -36,6 +38,7 @@ function deleteTodo(note, deleteTodo) {
   for (var i = 0; i < note.info.todos.length; i++) {
     note.info.todos[i].index = i
   }
+  console.log('TODO Removed: ', note)
   updateNote(note)
 }
 
@@ -124,6 +127,7 @@ function _createNotes() {
           },
         },
       ]
+      console.log('Notes creation')
       localStorage.setItem(KEEP_NOTE_KEY, JSON.stringify(notes) || null)
     }
   })

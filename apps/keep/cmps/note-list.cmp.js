@@ -4,7 +4,8 @@ export default {
   template: `
    <section class="notes-list-container">
    <div v-for="note in notes" :key="note.id" class="keep-app-notes-list"
-       :class="{'keep-note-pin': note.isPinned, 'keep-note-not-pin': !note.isPinned}">
+       :class="{'keep-note-pin': note.isPinned, 'keep-note-not-pin': !note.isPinned}"
+       :style="{backgroundColor: setBackGround(note)}">
         <!-- <h1>{{ note.info.title }}</h1> -->
         <!-- <h4>ID: {{ note.id }}</h4> -->
             <div v-if="note.isPinned" class="pinned-icon">Pinned Note!</div>
@@ -33,9 +34,10 @@ export default {
       console.log(noteId)
       this.$emit('remove', noteId)
     },
-     editNote(note) {
-       this.$emit('edit', note)
-     },
+    editNote(note) {
+      console.log('noteID', note)
+      this.$emit('edidat', note)
+    },
     togglePin(note) {
       this.$emit('togglePin', note)
     },
@@ -45,6 +47,12 @@ export default {
         if (note.isPinned) return 'unpin'
         else return 'pin'
       }
+    },
+    setBackGround(note) {
+      if ('style' in note) {
+        if ('backgroundColor' in note.style) return note.style.backgroundColor
+      }
+      return '#F7F0F5'
     },
     dupNote(note) {
       this.$emit('dup', note)

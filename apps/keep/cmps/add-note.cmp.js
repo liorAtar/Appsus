@@ -6,10 +6,10 @@ export default {
         <input @click="isEdit=true" v-if="!isToDo" type="text" v-model="userInput" ref="ph" v-bind:placeholder="placeHolderMsg">
         <textarea @click="isEdit=true" v-else v-bind:placeholder="placeHolderMsg" ref="ph" type="text" v-model="userInput"></textarea>
         <span>
-            <button title="Add a note" @click="isNote = true, isImage=false,isVideo=false,isToDo=false,placeHolderMsg='enter a new note'" :class="{'keep-button-choice': isNote}">➕</button>
-            <button title="Add a image note" @click="isNote = false, isImage=true,isVideo=false,isToDo=false,placeHolderMsg='enter img url'" :class="{'keep-button-choice': isImage}">🖼️</button>
-            <button title="Add a video note" @click="isNote = false, isImage=false,isVideo=true,isToDo=false,placeHolderMsg='enter link from youtube'" :class="{'keep-button-choice': isVideo}">🎞️</button>
-            <button title="Add a todo list" @click="isNote = false, isImage=false,isVideo=false,isToDo=true,placeHolderMsg='to submit todo, press enter'" :class="{'keep-button-choice': isToDo}">🕥</button>
+            <button title="Add a note" @click="isNote = true, isImage=false,isVideo=false,isToDo=false,placeHolderMsg='Note content...'" :class="{'keep-button-choice': isNote}">➕</button>
+            <button title="Add a image note" @click="isNote = false, isImage=true,isVideo=false,isToDo=false,placeHolderMsg='Image URL'" :class="{'keep-button-choice': isImage}">🖼️</button>
+            <button title="Add a video note" @click="isNote = false, isImage=false,isVideo=true,isToDo=false,placeHolderMsg='Youtube link'" :class="{'keep-button-choice': isVideo}">🎞️</button>
+            <button title="Add a todo list" @click="isNote = false, isImage=false,isVideo=false,isToDo=true,placeHolderMsg='Enter to submit'" :class="{'keep-button-choice': isToDo}">🕥</button>
         </span>
     </div>
     
@@ -18,15 +18,25 @@ export default {
             <div class="keep-modal-container" :style="{backgroundColor: noteBgColor}">
                 <button title="close" class="keep-modal-cancel-btn" v-on:click="saveNote(false)">🗙</button>
                 <h3>Create New Note</h3>
-                <input v-model="noteTitle" placeholder="enter note title">
+                <input v-model="noteTitle" placeholder="Note title...">
                 <textarea v-if="!isToDo" type="text" v-model="userInput" v-bind:placeholder="placeHolderMsg"></textarea>
                 <div v-else class="keep-add-todo-container">
                     <textarea v-on:keyup.enter="addTodo" v-bind:placeholder="placeHolderMsg" type="text" v-model="userInput"></textarea>
                     <button @click="addTodo">enter</button>
                 </div>
-                <span :class="{'todos-opts-btn':isToDo}">
-                    <button title="save note" class="keep-cls-modal-save-btn" v-on:click="saveNote">save</button>
+                <span :class="{'todos-btns':isToDo}">
+                    <button title="Change note color" class="pallete-btn" v-on:click="openPallete=!openPallete">🎨</button>
+                    <button title="Save a note" class="save-btn" v-on:click="saveNote">✅</button>
                 </span>
+                <div v-if="openPallete" class="pallete-container">
+                  <span @click="noteBgColor='#ff9100'" class="keep-orange-dot"></span>
+                  <span @click="noteBgColor='#ff0000'" class="keep-red-dot"></span>
+                  <span @click="noteBgColor='#90ee90'" class="keep-green-dot"></span>
+                  <span @click="noteBgColor='#ffc0cb'" class="keep-pink-dot"></span>
+                  <span @click="noteBgColor='#e0ffff'" class="keep-lightBlue-dot"></span>
+                  <span @click="noteBgColor='#ffffe0'" class="keep-yellow-dot"></span>
+                  <span @click="noteBgColor='#dda0dd'"class="keep-purple-dot"></span>
+                </div>
             </div>
         </div>
     </div>
@@ -39,12 +49,12 @@ export default {
       isImage: null,
       isVideo: null,
       isToDo: null,
-      placeHolderMsg: 'enter a new note',
+      placeHolderMsg: 'Note content...',
       isEdit: null,
       newNoteDetails: null,
       noteTitle: null,
       openPallete: false,
-      noteBgColor: '#9107e7',
+      noteBgColor: '#222222d1',
       todosList: [],
     }
   },

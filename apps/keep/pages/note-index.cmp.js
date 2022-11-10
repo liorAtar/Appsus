@@ -3,6 +3,7 @@ import addNote from '../cmps/add-note.cmp.js'
 import noteList from '../cmps/note-list.cmp.js'
 import editNote from '../cmps/edit-note.cmp.js'
 import noteFilter from '../cmps/note-filter.cmp.js'
+import { eventBus } from '../../../services/event-bus.service.js'
 
 export default {
   template: `
@@ -10,23 +11,38 @@ export default {
   <button class="close-modal-btn" @click="toggleMenu">Close ❌</button> 
   <hr>
     <div class="modal-items-ctn">
-  
-            <button @click=""><span>Background Color</span>🎨</button>
-            <button @click=""><span>Settings</span>⚙️</button>  
-            <button>X</button>
-            <button>X</button>
-            <button>X</button>
-            <button>X</button>
+
+            <button @click="openSettingsPallete = !openSettingsPallete; openSettings = false;"><span>Background Color</span>🎨</button>
+            <button @click="openSettingsPallete = false; openSettings = !openSettings;"><span>Settings</span>⚙️</button>
+            <div v-if="openSettings" class="settings-container">
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <span>Dark mode</span>
+            </div>
+            <div v-if="openSettingsPallete" class="pallete-container">
+                <span @click="clientBgColor='#ff9100'" class="keep-orange-dot"></span>
+                <span @click="clientBgColor='#ff0000'" class="keep-red-dot"></span>
+                <span @click="clientBgColor='#90ee90'" class="keep-green-dot"></span>
+                <span @click="clientBgColor='#ffc0cb'" class="keep-pink-dot"></span>
+                <span @click="clientBgColor='#e0ffff'" class="keep-lightBlue-dot"></span>
+                <span @click="clientBgColor='#ffffe0'" class="keep-yellow-dot"></span>
+                <span @click="clientBgColor='#dda0dd'"class="keep-purple-dot"></span>
+            </div>
     </div>
   </div>
     <div class="keep-app-main">
         <span class="keep-header"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Google_Keep_icon_%282020%29.svg/800px-Google_Keep_icon_%282020%29.svg.png">
         <h1 class="keep-header-color">KEEP APP</h1></span>
         <button class="menu-button" @click="toggleMenu" v-if="!hideBurger">≡</button>
-        <note-filter @filtered="filterNote"/>
+        <hr class="keep-app-hr">
         <add-note  @add="saveNewNote"/>
-        <note-list @remove="removeNote" @todo="saveToDo" @delTodo="deleteTodo" @togglePin="changeNotePin" @dup="dupNote" :notes='notesToDisplay'/>
-        <!-- <edit-note :noteEdit="noteToEdit"/> -->
+        <note-filter @filtered="filterNote"/>
+        <div class="notes-inner-ctn" :style="{backgroundColor: clientBgColor}">
+          <note-list @remove="removeNote" @todo="saveToDo" @delTodo="deleteTodo" @togglePin="changeNotePin" @dup="dupNote" :notes='notesToDisplay'/>
+        </div>
+        <edit-note v-if="noteToEdit" @saveEdit="updateNote" @noSave="noteToEdit=null" :noteEdit="noteToEdit"/>
     </div>
     `,
   components: {
@@ -42,6 +58,9 @@ export default {
       filterBy: null,
       isMenu: false,
       hideBurger: false,
+      openSettingsPallete: false,
+      clientBgColor: null,
+      openSettings: false,
     }
   },
   created() {
@@ -52,7 +71,7 @@ export default {
       this.isMenu = !this.isMenu
       this.hideBurger = !this.hideBurger
       console.log('status', this.isMenu)
-      console.log('menu activated');
+      console.log('menu activated')
     },
     saveToDo(note, todo) {
       noteService.updateTodo(note, todo)
@@ -68,7 +87,10 @@ export default {
       noteService.remove(noteId)
       const idx = this.notes.findIndex((note) => note.id === noteId)
       this.notes.splice(idx, 1)
-      // eventBus.emit('show-msg', { txt: 'Book has been deleted', type: 'success' });
+      eventBus.emit('show-msg', {
+        txt: 'Book has been deleted',
+        type: 'success',
+      })
     },
     sendToEdit(note) {
       this.noteToEdit = note

@@ -5,23 +5,19 @@
   padding: 2em;
   flex-direction: row;
   justify-content: space-between;
-  
 }
-.app-header nav{
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  display: flex;
-  justify-content: space-evenly;
-  text-align: center;
-  flex-direction: row;
+.app-header nav {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: white;
   font-size: 18px;
 }
 
-.app-header img:hover{
+.app-header img:hover {
   transform: rotate(30deg);
   transition: 10s;
 }
-@media(max-width: 720px) {
+@media (max-width: 720px) {
   .app-header {
     background-color: var(--clr3);
     color: var(--secondary-clr2);

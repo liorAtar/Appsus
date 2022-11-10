@@ -1,45 +1,45 @@
-.menu-button{
-    font-size: 35px;
-    background-color: transparent;
-    border-color: transparent;
-    position: absolute;
-    top: 250px;
-    right: 10px;
+.menu-button {
+  font-size: 35px;
+  background-color: transparent;
+  border-color: transparent;
+  position: absolute;
+  top: 250px;
+  right: 200px;
 }
-.modal-items-ctn{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-rows: auto;
+.modal-items-ctn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
 }
-.settings-modal{
-    background-color: rgba(252, 252, 252, 0.931);
-    padding: 10px;
-    height: 230px;
-    width: 300px;
-    position: absolute;
-    margin-top: 250px;
-    margin-left: 200px;
-    border-radius: 15px;
-    right: 20px;
-    z-index: 999;
-    border-color: rgba(0, 0, 0, 0.765);
-    border-style: solid;
-    border-radius: 15px;
+.settings-modal {
+  background-color: rgba(252, 252, 252, 0.931);
+  padding: 10px;
+  height: 230px;
+  width: 300px;
+  position: absolute;
+  margin-top: 250px;
+  margin-left: 200px;
+  border-radius: 15px;
+  right: 20px;
+  z-index: 999;
+  border-color: rgba(0, 0, 0, 0.765);
+  border-style: solid;
+  border-radius: 15px;
 }
 
-.settings-modal button{
-    background-color: transparent;
-    border-color: transparent;
-    color: rgb(0, 0, 0);
+.settings-modal button {
+  background-color: transparent;
+  border-color: transparent;
+  color: rgb(0, 0, 0);
 }
-.settings-modal button:not(.close-modal-btn):hover{
-    background-color: rgba(101, 101, 101, 0.122);   
+.settings-modal button:not(.close-modal-btn):hover {
+  background-color: rgba(101, 101, 101, 0.122);
 }
-.close-modal-btn{
-    position: relative;
-    bottom: 20px;
-    left: -10px;
+.close-modal-btn {
+  position: relative;
+  bottom: 20px;
+  left: -10px;
 }
-.close-modal-btn:hover{
-    background-color: transparent;
+.close-modal-btn:hover {
+  background-color: transparent;
 }
