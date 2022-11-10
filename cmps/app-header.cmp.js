@@ -11,7 +11,7 @@ export default {
     `,
   computed: {
     imgUrl() {
-      return '../../assets/imgs/appSus-logo.png'
+      return 'assets/imgs/appSus-logo.png'
     },
   },
 }
