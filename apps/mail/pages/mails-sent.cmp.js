@@ -1,13 +1,13 @@
 import { eventBus } from "../../../services/event-bus.service.js"
-import { mailService } from "../services/mail-service.js"
 import mailList from '../cmps/mail-list.cmp.js'
 
 export default {
+    props: ['currMails', 'selectedMail'], 
     template: `
     <section class="mails">
         <div class="mails-type mail-checkbox" @click="updateRead(mail)"><input type="checkbox"/></div>
         <mail-list 
-            v-if="mails"
+            v-if="sentMails"
             :mails="allMails"
             @selected="selectMail" 
             @updateStarred="updateStarStatus"
@@ -17,47 +17,35 @@ export default {
     `,
     data() {
         return {
-            mails: null,
-            selectedMail: null,
+            sentMails: null,
+            currSelectedMail: null,
         }
     },
     created() {
-        this.loasMails()
-        eventBus.on('add-mail', this.reloadMails)
+        eventBus.on('add-mail', this.addMails)
+        this.sentMails = this.currMails
+        this.currSelectedMail = this.selectMail
     },
     methods: {
-        loasMails(){
-            mailService.query()
-            .then(mails => {
-                this.mails = mails
-            })
-        },
-        reloadMails(payload){
-            mailService.addNewMail(payload)
-            .then( mail => {
-                this.mails.push(mail)
-            })
+        addMails(payload){
+            this.$emit('add', payload)
         },
         removeMail(mailId) {
-            mailService.remove(mailId)
-                .then(() => {
-                    const idx = this.mails.findIndex(mails => mails.id === mailId)
-                    this.mails.splice(idx, 1)
-                })
+            this.$emit('remove', mailId)
         },
         selectMail(mail) {
-            this.selectedMail = mail
+            this.$emit('selected', mail)
         },
-        updateStarStatus(mail) {
-            mailService.updateIsStarred(mail).then(mail => this.selectedMail = mail)
+        updateStarStatus(mailId) {
+            this.$emit('updateStarred', mailId)
         },
-        updateReadStatus(mail) {
-            mailService.updateIsRead(mail).then(mail => this.selectedMail = mail)
+        updateReadStatus(mailId) {
+            this.$emit('updateRead', mailId)
         },
     },
     computed: {
         allMails() {
-            return this.mails && this.mails.filter(mail => mail.status === "sent").reverse()
+            return this.sentMails && this.sentMails.filter(mail => mail.status === "sent").reverse()
         },
     },
     components: {

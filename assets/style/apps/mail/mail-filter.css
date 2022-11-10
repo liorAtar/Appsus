@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     background-color: #c7daff3d;
+    gap: 10px;
 }
 
 .menu-filter .menu-header{
@@ -60,6 +61,19 @@
     outline: none;
     background-color: white;
     box-shadow: 1px 1px 6px grey;
+}
+
+.menu-filter .btn-unread {
+    border-radius: 10px;
+    border: 1px solid grey;
+    color: grey;
+    min-height: 34px !important;
+    background-color: white;
+    padding: 0 10px;
+}
+
+.menu-filter .btn-unread:hover {
+    box-shadow: inset 1px 0px 20px lightgrey;
 }
 
 @media(max-width: 800px) {

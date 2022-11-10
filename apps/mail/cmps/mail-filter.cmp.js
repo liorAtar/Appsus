@@ -13,6 +13,7 @@ export default {
                 </span>
                 <input class="search-input" type="search" placeholder="Search mail">
             </label>
+            <button class="btn-unread">Is unread</button>
         </section>
     `,
     methods: {

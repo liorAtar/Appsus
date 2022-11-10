@@ -1,12 +1,12 @@
-import { mailService } from "../services/mail-service.js"
 import mailList from '../cmps/mail-list.cmp.js'
 
 export default {
+    props: ['currMails', 'selectedMail'], 
     template: `
     <section class="mails">
         <div class="mails-type mail-checkbox" @click="updateRead(mail)"><input type="checkbox"/></div>
         <mail-list 
-            v-if="mails"
+            v-if="draftMails"
             :mails="allMails"
             @selected="selectMail" 
             @updateStarred="updateStarStatus"
@@ -14,42 +14,33 @@ export default {
             @remove="removeMail" />
     </section>
     `,
-    data() {
+     data() {
         return {
-            mails: null,
-            selectedMail: null,
+            draftMails: null,
+            currSelectedMail: null,
         }
     },
     created() {
-        this.loasMails()
+        this.draftMails = this.currMails
+        this.currSelectedMail = this.selectMail
     },
     methods: {
-        loasMails(){
-            mailService.query()
-            .then(mails => {
-                this.mails = mails
-            })
-        },
         removeMail(mailId) {
-            mailService.remove(mailId)
-                .then(() => {
-                    const idx = this.mails.findIndex(mails => mails.id === mailId)
-                    this.mails.splice(idx, 1)
-                })
+            this.$emit('remove', mailId)
         },
         selectMail(mail) {
-            this.selectedMail = mail
+            this.$emit('selected', mail)
         },
-        updateStarStatus(mail) {
-            mailService.updateIsStarred(mail).then(mail => this.selectedMail = mail)
+        updateStarStatus(mailId) {
+            this.$emit('updateStarred', mailId)
         },
-        updateReadStatus(mail) {
-            mailService.updateIsRead(mail).then(mail => this.selectedMail = mail)
+        updateReadStatus(mailId) {
+            this.$emit('updateRead', mailId)
         },
     },
     computed: {
         allMails() {
-            return this.mails.filter(mail => mail.status === "draft")
+            return this.draftMails.filter(mail => mail.status === "draft")
         },
     },
     components: {
