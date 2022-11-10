@@ -7,7 +7,8 @@ import noteFilter from '../cmps/note-filter.cmp.js'
 export default {
   template: `
   <div class="settings-modal" v-if="isMenu">
-  <button class="close-modal-btn" @click="toggleMenu">❌</button> 
+  <button class="close-modal-btn" @click="toggleMenu">Close ❌</button> 
+  <hr>
     <div class="modal-items-ctn">
   
             <button @click=""><span>Background Color</span>🎨</button>

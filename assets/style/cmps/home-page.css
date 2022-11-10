@@ -14,7 +14,8 @@
 .home-intro > p{
   font-size: 18px;
 }
-.home-intro > h2{
+.home-intro > h1, h2{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-transform: uppercase;
 }
 

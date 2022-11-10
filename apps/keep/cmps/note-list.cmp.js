@@ -5,8 +5,8 @@ export default {
    <section class="notes-list-container">
    <div v-for="note in notes" :key="note.id" class="keep-app-notes-list"
        :class="{'keep-note-pin': note.isPinned, 'keep-note-not-pin': !note.isPinned}">
-        <h1>{{ note.info.title }}</h1>
-        <h4>ID: {{ note.id }}</h4>
+        <!-- <h1>{{ note.info.title }}</h1> -->
+        <!-- <h4>ID: {{ note.id }}</h4> -->
             <div v-if="note.isPinned" class="pinned-icon">Pinned Note!</div>
             <note-preview @todoChange="updateTodo" @todoDel="deleteTodo" :note="note" @edit="editNote(note)"/>
             <span class="keep-list-note-options">

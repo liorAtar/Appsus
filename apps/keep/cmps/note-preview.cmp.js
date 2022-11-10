@@ -2,7 +2,7 @@ export default {
   props: ['note'],
   template: `
   <section v-if="note" v-on:click.self="this.$emit('edit')">
-    <h1>vue.</h1>
+    <!-- <h1>vue.</h1> -->
       <div v-on:click.self="this.$emit('edit')" :style="{backgroundColor: setBackGround()}" >
           <img v-on:click.self="this.$emit('edit')" v-if="getUrl()" :src='getUrl()' alt="unknown URL ;)">
           <h3 v-on:click.self="this.$emit('edit')">{{getTitle()}}</h3>
