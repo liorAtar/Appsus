@@ -26,65 +26,6 @@
   background-color: #cfdcf63d;
   padding: 15px;
 }
-.keep-modal-container {
-  padding: 1.5em;
-  background-color: #d2d7e3;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 33%);
-  transition: all 0.2s ease;
-  margin: 0em;
-  width: 35em;
-  height: 25em;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  gap: 1em;
-  justify-content: center;
-}
-.keep-modal-container input:first-of-type {
-  height: fit-content;
-  padding: 0.5em 0 0.5em 0.1em;
-  font-size: larger;
-}
-
-.keep-modal-container textarea:first-of-type {
-  padding: 0.5em 0 0.5em 0.1em;
-  height: 100%;
-}
-
-.keep-modal-container span > button {
-  outline: #171a21 1px solid;
-  font-size: 1.5em;
-  border: none;
-  box-sizing: border-box;
-}
-
-.keep-modal-container > span {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
-.keep-modal-container > span *:hover {
-  cursor: pointer;
-}
-.keep-add-todo-container {
-  display: inline-block;
-  position: relative;
-  box-sizing: border-box;
-}
-
-.keep-add-todo-container button {
-  position: absolute;
-  bottom: -0.9995em;
-  margin: 0 0 0.1em 0.1em;
-}
-
-.keep-add-todo-container textarea {
-  width: 100%;
-  display: block;
-}
 .new-mail .title .close-btn {
   height: fit-content;
   width: fit-content;

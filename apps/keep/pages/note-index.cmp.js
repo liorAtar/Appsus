@@ -80,6 +80,7 @@ export default {
       noteService.deleteTodo(note, todo)
     },
     saveNewNote(newNote) {
+      eventBus.emit('show-msg', {txt: 'Note has been saved',type: 'success',})
       noteService.addNewNote(newNote)
       this.notes.push(newNote)
     },
@@ -87,10 +88,7 @@ export default {
       noteService.remove(noteId)
       const idx = this.notes.findIndex((note) => note.id === noteId)
       this.notes.splice(idx, 1)
-      eventBus.emit('show-msg', {
-        txt: 'Book has been deleted',
-        type: 'success',
-      })
+      eventBus.emit('show-msg', {txt: 'Note has been deleted',type: 'error',})
     },
     sendToEdit(note) {
       this.noteToEdit = note
@@ -141,8 +139,6 @@ export default {
             (note) => note.type === this.filterBy.type
           )
       }
-      console.log(filterNotes, 'filtered notes')
-
       return filterNotes
     },
   },

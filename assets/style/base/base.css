@@ -44,6 +44,7 @@ nav a,
 button {
   min-width: 48px;
   min-height: 48px;
+  color: black;
 }
 
 /* Simple and useful CSS Debugging Technique */

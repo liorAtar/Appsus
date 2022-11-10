@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       userInput: this.getNoteInfo(),
-      isEdit: true,
+      isEdit: false,
       placeHolderMsg: 'edit note',
       newDetails: null,
       noteTitle: this.noteEdit.info.title,

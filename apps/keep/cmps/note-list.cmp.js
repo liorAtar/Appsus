@@ -8,7 +8,7 @@ export default {
        :style="{backgroundColor: setBackGround(note)}">
         <!-- <h1>{{ note.info.title }}</h1> -->
         <!-- <h4>ID: {{ note.id }}</h4> -->
-            <div v-if="note.isPinned" class="pinned-icon">Pinned Note!</div>
+            <!-- <div v-if="note.isPinned" class="pinned-icon">Pinned Note!</div> -->
             <note-preview @todoChange="updateTodo" @todoDel="deleteTodo" :note="note" @edit="editNote(note)"/>
             <span class="keep-list-note-options">
                 <button title="Delete note" @click="remove(note.id)">❌</button>
@@ -35,8 +35,8 @@ export default {
       this.$emit('remove', noteId)
     },
     editNote(note) {
-      console.log('noteID', note)
-      this.$emit('edidat', note)
+      console.log('EDIT noteID', note)
+      this.$emit('edit', note)
     },
     togglePin(note) {
       this.$emit('togglePin', note)

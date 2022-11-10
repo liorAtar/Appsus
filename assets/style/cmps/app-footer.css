@@ -1,7 +1,8 @@
 .app-footer{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     padding: 10px;
-    background: rgb(32, 32, 32);
-    color: white;
+    background: rgba(244, 244, 244, 0.928);
+    color: rgb(50, 50, 50);
     text-align: center;
     z-index: 1;
 }
