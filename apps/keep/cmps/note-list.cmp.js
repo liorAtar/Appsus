@@ -14,7 +14,7 @@ export default {
                 <button title="Delete note" @click="remove(note.id)">❌</button>
                 <button title="Edit note" @click="editNote(note)">🖊️</button>
                 <button title="Duplicate note" @click="dupNote(note)">✌️</button>
-                <button :title="getTitle(note)" @click="togglePin(note)">📌</button>
+                <button :title="getTitle(note)" :class="{pinned: note.isPinned,'not-pinned': !note.isPinned}" @click="togglePin(note)">📌</button>
             </span>
         </div>
     </section>

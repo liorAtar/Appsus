@@ -11,7 +11,6 @@ export default {
   <button class="close-modal-btn" @click="toggleMenu">Close ❌</button> 
   <hr>
     <div class="modal-items-ctn">
-
             <button @click="openSettingsPallete = !openSettingsPallete; openSettings = false;"><span>Background Color</span>🎨</button>
             <button @click="openSettingsPallete = false; openSettings = !openSettings;"><span>Settings</span>⚙️</button>
             <div v-if="openSettings" class="settings-container">
@@ -40,9 +39,9 @@ export default {
         <add-note  @add="saveNewNote"/>
         <note-filter @filtered="filterNote"/>
         <div class="notes-inner-ctn" :style="{backgroundColor: clientBgColor}">
-          <note-list @remove="removeNote" @todo="saveToDo" @delTodo="deleteTodo" @togglePin="changeNotePin" @dup="dupNote" :notes='notesToDisplay'/>
         </div>
         <edit-note v-if="noteToEdit" @saveEdit="updateNote" @noSave="noteToEdit=null" :noteEdit="noteToEdit"/>
+        <note-list @remove="removeNote" @todo="saveToDo" @delTodo="deleteTodo" @edit="sendToEdit" @togglePin="changeNotePin" @dup="dupNote" :notes='notesToDisplay'/>
     </div>
     `,
   components: {

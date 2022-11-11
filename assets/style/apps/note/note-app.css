@@ -337,3 +337,48 @@ iframe {
   width: 100%;
   display: block;
 }
+
+
+/* MEDIA QUERIES */
+
+/* MOBILE */ 
+@media (max-width: 569px) {
+  .notes-list-container {
+    display: grid;
+    grid-template-columns: repeat(1, 0.1fr);
+    gap: 5px;
+    padding: 2em;
+    justify-content: center;
+  }
+  .keep-app-main {
+    margin: 0;
+    background-color: #ffffffa4;
+    color: #121212;
+    border: 1px solid #171a2141;
+    border-radius: 15px;
+    width: 80%;
+    margin: 1em auto 0 auto;
+    margin-bottom: 10px;
+  }
+}
+/* TABLET */ 
+@media (min-width: 570px) and (max-width: 1199px){
+  .notes-list-container {
+    display: grid;
+    grid-template-columns: repeat(2, 0.1fr);
+    gap: 5px;
+    padding: 1em;
+    justify-content: center;
+  }
+}
+
+/* DESKTOP */ 
+@media (min-width: 1200px) {
+  .notes-list-container {
+    display: grid;
+    grid-template-columns: repeat(4, 0.1fr);
+    gap: 10px;
+    padding: 2em;
+    justify-content: space-evenly;
+  }
+}
