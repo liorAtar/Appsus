@@ -12,7 +12,7 @@ export default {
              isquam cumque placeat quia natus officiis maiores soluta ipsum <br>
              nisi! Reiciendis, aut quisquam?<br>
              orem ipsum dolor sit amet consectetur adipisicing elit</p>
-        <img src="../assets/imgs/appsus.png" alt="">
+        <img src="assets/imgs/appsus.png" alt="">
          <hr>
          <h2>Applications</h2>
          <div class="home-links">

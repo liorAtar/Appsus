@@ -5,7 +5,7 @@ export default {
             <div class="menu-top">
                 <div class="menu-header">
                     <i class="fa fa-bars" aria-hidden="true" @click="updateModalStatus"></i>
-                    <img class="gmail-logo" src="../../../assets/imgs/gmail-logo.png" />
+                    <img class="gmail-logo" src="assets/imgs/gmail-logo.png" />
                     <p>Gmail</p>
                 </div>
                 <label class="search">
