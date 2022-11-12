@@ -6,6 +6,7 @@
   background-color: white;
   border-radius: 20px;
   transition: 1s;
+  z-index: 10;
   box-shadow: 1px 0px 20px grey;
 }
 .modal-open {

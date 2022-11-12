@@ -47,6 +47,9 @@ export default {
       };
       this.$emit("closeNewMail");
       eventBus.emit('add-mail', mail)
+      this.recipient = ''
+      this.subject = ''
+      this.body = ''
     },
     updateSubject(ev) {
         this.subject = ev.target.value

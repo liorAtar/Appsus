@@ -32,11 +32,7 @@
 }
 
 .menu-filter .menu-header i {
-    height: 40px;
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: none;
 }
 
 .menu-filter .menu-header i:hover {
@@ -85,6 +81,14 @@
     
     .menu-filter .search .search-icon {
         padding-left: 36px;
+    }
+
+    .menu-filter .menu-header i {
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 

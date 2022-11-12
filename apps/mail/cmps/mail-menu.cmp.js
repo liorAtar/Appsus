@@ -46,9 +46,11 @@ export default {
             this.tab = ev.target.innerText
             this.$router.push(`/mail/${ev.target.innerText.toLowerCase()}`)
             this.$emit('updateTab', this.tab)
+            this.closeModal()
         },
         openNewMail() {
             this.$emit('openNewMail')
+            this.closeModal()
         },
         closeModal() {
             this.isOpen = false
