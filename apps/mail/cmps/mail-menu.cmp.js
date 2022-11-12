@@ -1,3 +1,5 @@
+import { eventBus } from "../../../services/event-bus.service.js"
+
 export default {
     props: ['selectedTab', 'isModalOpen'],
     template: `
@@ -46,6 +48,7 @@ export default {
             this.tab = ev.target.innerText
             this.$router.push(`/mail/${ev.target.innerText.toLowerCase()}`)
             this.$emit('updateTab', this.tab)
+            eventBus.emit('tab-changed', this.tab)
             this.closeModal()
         },
         openNewMail() {

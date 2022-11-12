@@ -1,4 +1,5 @@
 import { mailService } from "../apps/mail/services/mail-service.js"
+import { eventBus } from "../services/event-bus.service.js"
 
 export default {
   template: `
@@ -6,7 +7,7 @@ export default {
         <router-link to="/"> <img :src="imgUrl" /> </router-link> 
             <nav>
                 <router-link to="/keep">Keep </router-link>
-                <router-link :to="mailLink" @click="updateCurrTab">Mail </router-link>
+                <router-link :to="mailLink">Mail </router-link>
                 <router-link to="/about">About </router-link>
             </nav>
         </header>
@@ -17,11 +18,12 @@ export default {
     }
   },
   created() {
-    this.updateCurrTab()
+    eventBus.on('tab-changed', this.updateCurrTab)
+    this.selectedTab = mailService.getSelectedTab();
   },
   methods: {
-    updateCurrTab(){
-      this.selectedTab = mailService.getSelectedTab();
+    updateCurrTab(tab){
+      this.selectedTab = tab
     }
   },
   computed: {
