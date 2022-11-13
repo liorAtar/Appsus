@@ -25,10 +25,10 @@ export default {
                         <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
                         <p>Sent</p>
                     </li>
-                    <li class="menu-tab" :class="tab === 'Draft' ? 'is-selected' : ''" @click="updateSelectedTab">
+                    <!-- <li class="menu-tab" :class="tab === 'Draft' ? 'is-selected' : ''" @click="updateSelectedTab">
                         <i class="fa fa-file-o" aria-hidden="true"></i>
                         <p>Draft</p>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </section>

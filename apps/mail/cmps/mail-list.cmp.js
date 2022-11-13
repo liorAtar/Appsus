@@ -13,7 +13,7 @@ export default {
                     <section class="actions">
                         <i class="fa fa-trash-o" aria-hidden="true" @click="remove(mail.id)"></i>
                         <i :v-if="mail.isRead" :class="mail.isRead? 'fa fa-envelope-o' : 'fa fa-envelope-open-o'" aria-hidden="true" @click="updateRead(mail)"></i>
-                        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        <!-- <i class="fa fa-paper-plane-o" aria-hidden="true"></i> -->
                     </section>
                 </li>
             </ul>
